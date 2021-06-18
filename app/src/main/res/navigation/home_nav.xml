@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/frg_user_list"
+    tools:ignore="InvalidNavigation">
+
+    <fragment
+        android:id="@+id/frg_user_list"
+        android:name="com.krunal.brainvire.ui.fragment.userList.UserFragment"
+        android:label="User List"
+        tools:layout="@layout/fragment_login"/>
+
+    <fragment
+        android:id="@+id/frg_user_detail"
+        android:name="com.krunal.brainvire.ui.fragment.userDetail.UserDetailFragment"
+        android:label="User Detail"
+        tools:layout="@layout/fragment_user_detail" />
+
+</navigation>
