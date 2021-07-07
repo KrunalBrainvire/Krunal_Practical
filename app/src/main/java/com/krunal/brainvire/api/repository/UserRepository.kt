@@ -51,5 +51,19 @@ class MainRepository @Inject constructor(private val apiService: ApiService) :
         return data
     }
 
+    suspend fun getUser(
+        strPage: String,
+        strResults: String
+    ): ApiState<UserResponse> {
+
+        return ApiState.success(
+            apiService.getUser(
+                strPage,
+                strResults
+            )
+        )
+
+    }
+
 
 }

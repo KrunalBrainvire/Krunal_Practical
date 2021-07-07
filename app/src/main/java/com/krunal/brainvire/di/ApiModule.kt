@@ -5,7 +5,7 @@ import com.krunal.brainvire.api.BaseURL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,11 +13,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class ApiModule {
 
+    @Singleton
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -25,6 +27,7 @@ class ApiModule {
         return httpLoggingInterceptor
     }
 
+    @Singleton
     @Provides
     @Named("OkHttpClientWithInterceptor")
     fun provideOkHttpClient(
@@ -37,6 +40,7 @@ class ApiModule {
             .build()
     }
 
+    @Singleton
     @Provides
     @Named("RetrofitWithInterceptor")
     fun provideRetrofit(
@@ -50,6 +54,7 @@ class ApiModule {
             .build()
     }
 
+    @Singleton
     @Provides
     fun provideIELTSListeningAPI(@Named("RetrofitWithInterceptor") retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)

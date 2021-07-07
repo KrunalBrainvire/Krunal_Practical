@@ -52,10 +52,27 @@ class UserFragment : BaseFragment<FragmentUserListBinding>() {
         })
 
         getUserData()
+
+        viewModel.data.observe(this, Observer {
+            when (it.ApiStatus) {
+                APIStatus.LOADING -> {
+                    Log.d("TAG", "getUserData: LOADING")
+                }
+                APIStatus.SUCCESS -> {
+                    Log.d("TAG", "getUserData: Success")
+                }
+                APIStatus.ERROR -> {
+                    Log.d("TAG", "getUserData: ERROR")
+                }
+            }
+        })
+        viewModel.callLectureAPI(page.toString(), "10")
     }
 
     private fun getUserData() {
         viewModel.getMenu(page.toString(), "10").observe(this, getReteObserver())
+
+
     }
 
     private fun getReteObserver(): Observer<ApiState<UserResponse>> {

@@ -11,4 +11,7 @@ interface ApiService {
     @GET("api/")
     fun getMenu(@Query("page") strPage: String,@Query("results") strResults: String): Single<UserResponse>
 
+    @GET("api/")
+    suspend fun getUser(@Query("page") strPage: String,@Query("results") strResults: String): UserResponse
+
 }

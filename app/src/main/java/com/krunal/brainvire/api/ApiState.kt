@@ -1,5 +1,7 @@
 package com.krunal.brainvire.api
 
+import com.krunal.brainvire.api.response.UserResponse
+
 
 data class ApiState<out T>(val ApiStatus: APIStatus, val data: T?, val error: String?) {
 
